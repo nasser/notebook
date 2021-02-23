@@ -78,10 +78,10 @@ function start(resources) {
             }
         }
 
-        function* spin() {
+        function* jump() {
             let u = 0
             while (u < 1) {
-                sprite.rotation = u * Math.PI * 2
+                sprite.y = -Math.abs(Math.sin(u * Math.PI * 2) * 30)
                 u += 0.01
                 yield
             }
@@ -95,7 +95,7 @@ function start(resources) {
             sprite.texture = stand
             yield* coro.wait(.5)
             if(Math.random() < 0.5) {
-                yield* spin()
+                yield* jump()
                 yield* coro.wait(.5)
             }
         }
